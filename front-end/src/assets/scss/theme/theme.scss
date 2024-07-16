@@ -1,0 +1,14 @@
+/*
+ * Global application theme.
+ * Framework overrides and customization goes here.
+ */
+@import "theme-variables";
+
+body {
+  background-color: $magenta-light;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  color: var(--bs-secondary);
+}

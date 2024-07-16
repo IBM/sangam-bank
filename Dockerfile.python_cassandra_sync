@@ -1,0 +1,8 @@
+FROM registry.access.redhat.com/ubi8/ubi
+RUN yum install python3 -y
+RUN yum install python3-devel -y
+RUN yum install libpq-devel -y
+RUN yum install gcc -y
+RUN pip3 install psycopg2
+RUN pip3 install cassandra-driver
+ENTRYPOINT ["python3","-m","http.server"]

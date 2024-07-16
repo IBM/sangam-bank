@@ -1,0 +1,153 @@
+<div class="agent-dashboard" cdsGrid [fullWidth]="true">
+    <div cdsRow>
+        <div cdsCol [columnNumbers]="{'lg': 12, 'md': 8, 'sm': 4}">
+            <div class="chat">
+                <div class="chat__header">
+                    <h1 class="chat__header-title">AI Assistant</h1>
+                    <div class="chat__header-actions">
+                        <span>
+                            <button class="button-text">AI</button>
+                        </span>
+                        <span>
+                            <button cdsButton="ghost">
+                                <svg cdsIcon="popup" size="20"></svg>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <cds-progress-bar
+                  [label]="''"
+                  [helperText]="''"
+                  [max]="50"
+                  [size]="'small'"
+                  [status]="progressBarStatus"
+                  [type]="'default'"
+                ></cds-progress-bar>
+                <div #chatBody class="chat__body">
+                    <div class="chat__content" *ngFor="let responseItem of responseItems">
+                      <div>
+                        <div class="chat__message-avatar"
+                          [ngClass]="{'chat__mesage-avatar--user': isPrompt(responseItem), 'chat__mesage-avatar--agent': isAgent(responseItem)}">
+                          <svg [cdsIcon]="isPrompt(responseItem) ? 'user' : 'headset'" size="20"></svg>
+                        </div>
+                      </div>
+                      <div class="chat__message-info">
+                        <div class="chat__mesage-data">{{ isPrompt(responseItem) ? 'You' : 'Agent' }} {{ getCurrentTime() }}</div>
+                        <ng-container *ngFor="let section of responseItem.sections">
+                          <ng-container *ngIf="section.type === 'text'; else tableSection">
+                            <!-- Render text content -->
+                            <p class="chat__message chat__message--text">{{ section.data }}</p>
+                          </ng-container>
+                          <ng-template #tableSection>
+                            <!-- Render table content -->
+                            <ng-container *ngIf="isFraudulent(section); else marketingTable">
+                              <table cdsTable *ngIf="section.type === 'table'">
+                                <thead>
+                                  <tr>
+                                    <th>Account ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Transaction ID</th>
+                                    <!-- <th>Fraud Score</th> -->
+                                    <th>Fraud Category</th>
+                                    <th>Transaction Amount</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngFor="let item of section.data">
+                                    <tr cdsTableRow>
+                                      <td>{{ item.acc_id }}</td>
+                                      <td>{{ item.first_name }}</td>
+                                      <td>{{ item.last_name }}</td>
+                                      <td>{{ item.email }}</td>
+                                      <td>{{ item.transaction_id }}</td>
+                                      <!-- <td>{{ item.fraud_score }}</td> -->
+                                      <ng-container [ngSwitch]="item.fraud_category">
+                                        <td *ngSwitchCase="1">Location</td>
+                                        <td *ngSwitchCase="2">Amount</td>
+                                        <td *ngSwitchCase="3">Transaction</td>
+                                      </ng-container>
+                                      <td>{{ item.transaction_amount | currency: 'USD':'symbol':'1.2-2' }}</td>
+                                      <td>{{ item.tran_date | date: 'shortDate' }}</td>
+                                      <td>{{ item.tran_date | date: 'shortTime' }}</td>
+                                    </tr>
+                                  </ng-container>
+                                </tbody>
+                              </table>
+                            </ng-container>
+                            <ng-template #marketingTable>
+                              <table cdsTable *ngIf="section.type === 'table'">
+                                <thead>
+                                  <tr>
+                                    <th>Account ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>State</th>
+                                    <th>Balance</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <ng-container *ngFor="let item of section.data">
+                                    <tr cdsTableRow>
+                                      <td>{{ item.acc_id }}</td>
+                                      <td>{{ item.first_name }}</td>
+                                        <td>{{ item.last_name }}</td>
+                                        <td>{{ item.email }}</td>
+                                        <td>{{ item.state }}</td>
+                                        <td>{{ item.balance| currency: 'USD':'symbol':'1.2-2' }}</td>
+                                      </tr>
+                                  </ng-container>
+                                </tbody>
+                              </table>
+                            </ng-template>
+
+                            <!-- <table cdsTable *ngIf="section.type === 'table'">
+                              <thead cdsTableHead>
+                                <tr *ngIf="responseItem.sections[0]?.type === 'table_headers'">
+                                  <ng-container *ngFor="let header of responseItem.sections[0]?.data | keyvalue">
+                                    <th>{{ header.value }}</th>
+                                  </ng-container>
+                                </tr>
+                                <tr *ngIf="responseItem.sections[0]?.type !== 'table_headers'">
+                                  <ng-container *ngFor="let key of getColumnKeys(section)">
+                                    <th>{{ key }}</th>
+                                  </ng-container>
+                                </tr>
+                              </thead>
+                              <tbody cdsTableBody>
+                                <ng-container *ngFor="let item of section.data">
+                                  <tr cdsTableRow>
+                                    <ng-container *ngFor="let key of getColumnKeys(section)">
+                                      <td>{{ item[key] }}</td>
+                                    </ng-container>
+                                  </tr>
+                                </ng-container>
+                              </tbody>
+                            </table> -->
+                          </ng-template>
+                        </ng-container>
+                      </div>
+                    </div>
+                </div>                                    
+                <div class="chat__footer-wrapper">
+                    <form #promptForm="ngForm" (ngSubmit)="sendPrompt(promptForm)" class="chat__footer">
+                        <div class="chat__footer-prompt">
+                            <textarea #chatPromptField name="prompt" rows="1" [(ngModel)]="textareaContent"
+                                (keydown.enter)="onEnter($event, promptForm)" (input)="adjustTextareaHeight()"
+                                required autofocus placeholder="Type something..."></textarea>
+                        </div>
+                        <div class="chat__footer-prompt-actions">
+                            <button cdsButton="ghost" [disabled]="progressBarStatus==='active' || !promptForm.valid">
+                                <svg cdsIcon="send" size="20"></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

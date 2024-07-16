@@ -1,0 +1,5 @@
+flask
+gevent
+python-dotenv
+psycopg2
+flask_cors

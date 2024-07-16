@@ -1,0 +1,20 @@
+FROM registry.access.redhat.com/ubi8/ubi
+RUN yum install wget -y
+RUN yum install unzip -y
+RUN wget https://go.dev/dl/go1.20.5.linux-ppc64le.tar.gz
+RUN gunzip go1.20.5.linux-ppc64le.tar.gz
+RUN tar -xvf go1.20.5.linux-ppc64le.tar
+RUN rm -rf go1.20.5.linux-ppc64le.tar
+#RUN pwd
+RUN chmod -R 777 /go
+ENV GOPATH=/go/
+ENV PATH=$PATH:/go/bin
+#RUN which go
+ADD apis /apis/
+WORKDIR /apis/
+RUN pwd
+RUN ls -lrt
+RUN go build main.go banking.go
+ENTRYPOINT ["./main"]
+#EXPOSE 9080
+

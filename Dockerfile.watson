@@ -1,0 +1,14 @@
+FROM registry.access.redhat.com/ubi9/ubi
+ADD watsonx-integration-server /watsonx
+
+WORKDIR /watsonx
+RUN chmod -R 777 /watsonx
+
+RUN yum install python3 -y && yum install python3-devel -y
+RUN yum install python3-pip -y && yum install gcc -y
+RUN pip3 install Flask
+RUN pip3 install flask_cors
+RUN pip3 install psycopg2-binary
+RUN pip3 install gevent
+RUN pip3 install python-dotenv
+ENTRYPOINT [ "python3", "flask-server.py"] 

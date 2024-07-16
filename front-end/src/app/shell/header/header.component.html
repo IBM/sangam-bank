@@ -1,0 +1,30 @@
+<div cdsTheme="g100">
+  <cds-header [brand]="brandTemplate" [route]="['/']">
+    <cds-header-navigation>
+      <cds-header-item routerLink="ai/assistant" [isCurrentPage]="true">AI Assistant</cds-header-item>
+      <cds-header-menu title="Account Management">
+        <cds-header-item routerLink="account/summary">Account Summary</cds-header-item>
+        <cds-header-item routerLink="amount/transfer">Transfer Funds</cds-header-item>
+        <cds-header-item routerLink="account/create">Create Account</cds-header-item>
+        <cds-header-item routerLink="user/create">Create User</cds-header-item>
+      </cds-header-menu>
+      <cds-header-item routerLink="support">Financial Planning</cds-header-item>
+    </cds-header-navigation>
+    <cds-header-global>
+      <cds-header-action title="Search the application">
+        <svg cdsIcon="search" size="20"></svg>
+      </cds-header-action>
+      <cds-header-action title="Review notifications">
+        <svg cdsIcon="notification" size="20"></svg>
+      </cds-header-action>
+      <cds-header-action title="Go to profile page">
+        <svg cdsIcon="user--avatar" size="20"></svg>
+      </cds-header-action>
+    </cds-header-global>
+  </cds-header>
+</div>
+<ng-template #brandTemplate>
+  <a class="cds--header__name">
+    <span>ACME Banking and Financial</span>
+  </a>
+</ng-template>

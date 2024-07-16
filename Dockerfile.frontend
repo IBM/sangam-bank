@@ -1,0 +1,6 @@
+FROM registry.access.redhat.com/ubi8/ubi
+RUN yum install nodejs -y
+ADD web /web/
+WORKDIR /web/
+RUN npm install
+ENTRYPOINT ["node","app.js"]

@@ -1,0 +1,14 @@
+FROM registry.access.redhat.com/ubi8/ubi
+#RUN yum install wget -y 
+#RUN wget https://raw.githubusercontent.com/creationix/nvm/master/install.sh
+#RUN sh install.sh
+#RUN source ~/.bashrc 
+#RUN nvm install 16.19.1
+#RUN npm install
+RUN yum install nodejs -y
+RUN npm install rhea
+RUN npm install pg
+COPY amq /amq
+WORKDIR /amq
+CMD ["node" "message_receiver.js"]
+

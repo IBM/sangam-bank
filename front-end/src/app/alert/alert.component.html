@@ -1,0 +1,4 @@
+<div *ngFor="let alert of alerts" class="alert-position {{cssClass(alert)}}">
+    <div [innerHTML]="alert.message"></div>
+    <button type="button" class="btn-close" (click)="removeAlert(alert)"></button>
+</div>
