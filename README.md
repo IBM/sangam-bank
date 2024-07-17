@@ -76,4 +76,4 @@ ALTER USER postgres WITH PASSWORD 'mynewpassword';
 3. Update AMQ host details on ```message_receiver.js``` and ```message_sender.js```
 4. Run message_receiver.js ```node message_receiver.js```
 5. Buld account creation for testing ```node message_sender.js```
-
+End of document
