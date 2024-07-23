@@ -41,38 +41,56 @@ export class LoginComponent implements OnInit {
 
     const loginDetails = {
       email_id: this.loginForm.value.userEmailId,
-      passwd: this.loginForm.value.password
-    }
+      passwd: this.loginForm.value.password,
+    };
 
-    this.homeService.loginUser(loginDetails).subscribe((response: any) => {
-      if (response) {
-       if (response.data) {
-        this.homeService.getUserDetails({email_id: this.loginForm.value.userEmailId}).subscribe((response) => {
-          if (response && response.data[0]) {
-            this.storeUser(response.data[0]);
-            this.loginForm.markAsPristine();
-            this.isLoading = false;
+    this.homeService.loginUser(loginDetails).subscribe(
+      (response: any) => {
+        if (response) {
+          if (response.data) {
+            this.homeService
+              .getUserDetails({ email_id: this.loginForm.value.userEmailId })
+              .subscribe(
+                (response) => {
+                  if (response && response.data[0]) {
+                    this.storeUser(response.data[0]);
+                    this.loginForm.markAsPristine();
+                    this.isLoading = false;
 
-            this.router.navigate([this.route.snapshot.queryParams['redirect'] || '/'], { replaceUrl: true });
+                    this.router.navigate(
+                      [this.route.snapshot.queryParams['redirect'] || '/'],
+                      { replaceUrl: true }
+                    );
+                  } else {
+                    this.alertService.error('Error retrieving the user', {
+                      autoClose: true,
+                    });
+                    this.isLoading = false;
+                  }
+                },
+                (error: any) => {
+                  this.alertService.error(
+                    'error in retrieving the user details:',
+                    { autoClose: true }
+                  );
+                  this.isLoading = false;
+                }
+              );
           } else {
-            this.alertService.error('Error retrieving the user', {autoClose: true});
+            this.alertService.error('Email Id or Password is incorrect', {
+              autoClose: true,
+            });
             this.isLoading = false;
-            
           }
-        }, (error: any) => {
-            this.alertService.error('error in retrieving the user details:', {autoClose: true});
-            this.isLoading = false;
-        })
-       } else {
-          this.alertService.error('Email Id or Password is incorrect', {autoClose: true});
-          this.isLoading = false;
-       }
+        }
+      },
+      (error: any) => {
+        this.alertService.error('Error in logging in user', {
+          autoClose: true,
+        });
+        this.isLoading = false;
       }
-    }, (error: any) => {
-      this.alertService.error('Error in logging in user', {autoClose: true});
-      this.isLoading = false;
-    })
-
+    );
 
     // this.isLoading = true;
     // const login$ = this.authenticationService.login(this.loginForm.value);
@@ -97,7 +115,7 @@ export class LoginComponent implements OnInit {
   }
 
   storeUser(user: any) {
-    let userObj: LoginContext 
+    let userObj: LoginContext;
 
     userObj = {
       username: user.Username,
@@ -110,8 +128,8 @@ export class LoginComponent implements OnInit {
       pincode: user.Pincode,
       email: user.Email,
       userId: user.UserId,
-      remember: this.loginForm.value.remember
-    }
+      remember: this.loginForm.value.remember,
+    };
 
     this.authenticationService.login(userObj);
   }

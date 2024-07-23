@@ -10,7 +10,10 @@ describe('AuthenticationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: CredentialsService, useClass: MockCredentialsService }, AuthenticationService],
+      providers: [
+        { provide: CredentialsService, useClass: MockCredentialsService },
+        AuthenticationService,
+      ],
     });
 
     authenticationService = TestBed.inject(AuthenticationService);
@@ -49,8 +52,12 @@ describe('AuthenticationService', () => {
       request.subscribe(() => {
         expect(credentialsService.isAuthenticated()).toBe(true);
         expect(credentialsService.credentials).not.toBeNull();
-        expect((credentialsService.credentials as Credentials).token).toBeDefined();
-        expect((credentialsService.credentials as Credentials).token).not.toBeNull();
+        expect(
+          (credentialsService.credentials as Credentials).token
+        ).toBeDefined();
+        expect(
+          (credentialsService.credentials as Credentials).token
+        ).not.toBeNull();
       });
     }));
 
@@ -65,7 +72,9 @@ describe('AuthenticationService', () => {
       // Assert
       request.subscribe(() => {
         expect(credentialsService.setCredentials).toHaveBeenCalled();
-        expect((credentialsService.setCredentials as jest.Mock).mock.calls[0][1]).toBe(undefined);
+        expect(
+          (credentialsService.setCredentials as jest.Mock).mock.calls[0][1]
+        ).toBe(undefined);
       });
     }));
 
@@ -81,7 +90,9 @@ describe('AuthenticationService', () => {
       // Assert
       request.subscribe(() => {
         expect(credentialsService.setCredentials).toHaveBeenCalled();
-        expect((credentialsService.setCredentials as jest.Mock).mock.calls[0][1]).toBe(true);
+        expect(
+          (credentialsService.setCredentials as jest.Mock).mock.calls[0][1]
+        ).toBe(true);
       });
     }));
   });

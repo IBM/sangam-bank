@@ -5,27 +5,25 @@ import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HomeService {
   constructor(
     private httpClient: HttpClient,
     private credentiasService: CredentialsService
-  ) { 
-    
-  }
+  ) {}
 
   createUser(userObj: any): Observable<any> {
     let url = 'newuser/';
     url = this.buildUrl(url, userObj);
-    return this.httpClient.post(url, {})
+    return this.httpClient.post(url, {});
   }
 
   createAccount(accountObj: any): Observable<any> {
     // http://localhost:9080/newaccount/?userid=2&bankid=1&cif=345345343&acc_type=1
 
     let url = 'newaccount/';
-    url = this.buildUrl(url, accountObj)
+    url = this.buildUrl(url, accountObj);
     return this.httpClient.post(url, {});
   }
 
@@ -62,7 +60,7 @@ export class HomeService {
     //       { 'rejectUnauthorized': 'false' })
     //   };
 
-    let url = 'validatepass/'
+    let url = 'validatepass/';
     // url = this.buildUrl(url, loginDetails);
     return this.httpClient.post(url, loginDetails);
   }
@@ -75,7 +73,7 @@ export class HomeService {
   }
 
   getAccounts(): Observable<any> {
-    const credentials  = this.credentiasService.credentials;
+    const credentials = this.credentiasService.credentials;
     let url = 'getaccounts/?user_id=' + credentials?.userId;
     return this.httpClient.get(url, {});
   }
@@ -85,13 +83,12 @@ export class HomeService {
       url = url + '?';
       let keys = Object.keys(dataObj) || [];
 
-      keys.forEach(key => {
+      keys.forEach((key) => {
         url = url + key + '=' + dataObj[key] + '&';
-      })
+      });
 
       url = url.substring(0, url.length - 1);
       return url;
-
     } else {
       return url;
     }

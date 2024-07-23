@@ -25,11 +25,10 @@ $font-path: "~carbon-components/src/globals/fonts";
 // Theme customization
 @import "assets/scss/theme/theme";
 
-
 // Custom Styles
 
 body {
-	@include styles.theme(styles.$g10);
+  @include styles.theme(styles.$g10);
   background-color: var(--cds-background);
-  font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
 }

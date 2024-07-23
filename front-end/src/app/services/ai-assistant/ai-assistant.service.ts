@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AiAssistantService {
-  private apiURL = 'https://watsonx-bankingdemo.apps.cluster-01.generative-ai-power-demos.ibm.net/data';
+  private apiURL =
+    'https://watsonx-bankingdemo.apps.cluster-01.generative-ai-power-demos.ibm.net/data';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAgentResponse(query: string): Observable<any> {
     const url = `${this.apiURL}?query=${encodeURIComponent(query)}`;

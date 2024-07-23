@@ -9,7 +9,16 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // carbon-components-angular default imports
-import { IconModule, IconService, ThemeModule, UIShellModule, GridModule, ButtonModule, TableModule, ProgressBarModule } from 'carbon-components-angular';
+import {
+  IconModule,
+  IconService,
+  ThemeModule,
+  UIShellModule,
+  GridModule,
+  ButtonModule,
+  TableModule,
+  ProgressBarModule,
+} from 'carbon-components-angular';
 
 // Icons
 // @ts-ignore
@@ -55,28 +64,21 @@ import { AlertComponent } from '@app/alert/alert.component';
     I18nModule,
     RouterModule,
   ],
-  declarations: [
-    AgentDashboardComponent, 
-    HeaderComponent, 
-    ShellComponent
-  ],
-  providers: [
-    DatePipe
-  ]
+  declarations: [AgentDashboardComponent, HeaderComponent, ShellComponent],
+  providers: [DatePipe],
 })
-
 export class ShellModule {
   constructor(protected iconService: IconService) {
-		iconService.registerAll([
-			Notification20,
-			UserAvatar20,
+    iconService.registerAll([
+      Notification20,
+      UserAvatar20,
       RadioButton20,
       Search20,
       CheckMarkFilled20,
       PopUp20,
       Send20,
       Headset20,
-      User20
-		]);
-	}
+      User20,
+    ]);
+  }
 }

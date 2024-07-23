@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { ResponseItem, TableItem } from '@app/models/table-item';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ResponseProcessingService {
-
-  constructor() { }
+  constructor() {}
 
   formatResponse(response: ResponseItem): ResponseItem {
     const formattedResponse: ResponseItem = { ...response }; // Copy original response
-  
+
     // Mapping object for property names
     const propertyMapping: { [key: string]: string } = {
       acc_id: 'Account ID',
@@ -39,25 +38,27 @@ export class ResponseProcessingService {
       tran_date: 'Transaction Date',
       tran_type_id: 'Transaction Type ID',
       transaction_amount: 'Transaction Amount',
-      transaction_id: 'Transaction ID'
+      transaction_id: 'Transaction ID',
     };
-  
+
     // Add table headers to the formatted response as an object
     const tableHeaders: { [key: string]: string } = {};
-    const firstDataSection = formattedResponse.sections.find(section => section.type === 'table')?.data[0];
+    const firstDataSection = formattedResponse.sections.find(
+      (section) => section.type === 'table'
+    )?.data[0];
     if (firstDataSection) {
-      Object.keys(firstDataSection[0]).forEach(key => {
+      Object.keys(firstDataSection[0]).forEach((key) => {
         if (propertyMapping[key]) {
           tableHeaders[key] = propertyMapping[key];
         }
       });
     }
-  
+
     formattedResponse.sections.unshift({
       data: tableHeaders,
-      type: 'table_headers'
+      type: 'table_headers',
     });
-  
+
     return formattedResponse;
   }
 }

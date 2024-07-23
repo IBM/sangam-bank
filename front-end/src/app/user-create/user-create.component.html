@@ -1,35 +1,49 @@
 <div class="container">
   <div class="card col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
     <div class="card-body">
-      <h3 class="card-title text-center action-header">
-        User Create
-      </h3>
-      <hr class="hr">
+      <h3 class="card-title text-center action-header">User Create</h3>
+      <hr class="hr" />
 
       <form (ngSubmit)="createUser()" [formGroup]="userCreateForm" novalidate>
         <div class="input-group">
           <div class="m-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" id="username" class="form-control" formControlName="userName">
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              formControlName="userName"
+            />
 
             <small
-            [hidden]="userCreateForm.controls['userName'].valid || userCreateForm.controls['userName'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['userName'].valid ||
+                userCreateForm.controls['userName'].untouched
+              "
+              class="text-danger"
+            >
               Username required
             </small>
-
           </div>
 
           <div class="m-3">
             <label for="userType" class="form-label">User Type</label>
-            <select class="form-select" aria-label="User Type" formControlName="userTypeId">
+            <select
+              class="form-select"
+              aria-label="User Type"
+              formControlName="userTypeId"
+            >
               <option value="2">Customer</option>
               <option value="1">Employee</option>
             </select>
 
             <small
-            [hidden]="userCreateForm.controls['userTypeId'].valid || userCreateForm.controls['userTypeId'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['userTypeId'].valid ||
+                userCreateForm.controls['userTypeId'].untouched
+              "
+              class="text-danger"
+            >
               User type required
             </small>
           </div>
@@ -38,22 +52,40 @@
         <div class="input-group">
           <div class="m-3">
             <label for="userEmailId" class="form-label">Email Id</label>
-            <input type="text" id="userEmailId" class="form-control" formControlName="userEmailId">
+            <input
+              type="text"
+              id="userEmailId"
+              class="form-control"
+              formControlName="userEmailId"
+            />
 
             <small
-            [hidden]="userCreateForm.controls['userEmailId'].valid || userCreateForm.controls['userEmailId'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['userEmailId'].valid ||
+                userCreateForm.controls['userEmailId'].untouched
+              "
+              class="text-danger"
+            >
               User email Id required
-          </small>
+            </small>
           </div>
 
           <div class="m-3">
             <label for="password" class="form-label">password</label>
-            <input type="password" id="password" class="form-control" formControlName="password">
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+            />
 
             <small
-            [hidden]="userCreateForm.controls['password'].valid || userCreateForm.controls['password'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['password'].valid ||
+                userCreateForm.controls['password'].untouched
+              "
+              class="text-danger"
+            >
               Password required
             </small>
           </div>
@@ -62,7 +94,11 @@
         <div class="input-group">
           <div class="m-3">
             <label for="gender" class="form-label">Gender</label>
-            <select class="form-select" aria-label="Default select example" formControlName="genederId">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              formControlName="genederId"
+            >
               <option selected value="0">Select gender</option>
               <option value="1">Male</option>
               <option value="2">Female</option>
@@ -70,74 +106,134 @@
             </select>
 
             <small
-            [hidden]="userCreateForm.controls['genederId'].valid || userCreateForm.controls['genederId'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['genederId'].valid ||
+                userCreateForm.controls['genederId'].untouched
+              "
+              class="text-danger"
+            >
               Gender required
             </small>
           </div>
           <div class="m-3">
             <label for="dob" class="form-label">DOB</label>
-            <input type="text" id="dob" class="form-control" formControlName="dob">
+            <input
+              type="text"
+              id="dob"
+              class="form-control"
+              formControlName="dob"
+            />
 
             <small
-            [hidden]="userCreateForm.controls['dob'].valid || userCreateForm.controls['dob'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['dob'].valid ||
+                userCreateForm.controls['dob'].untouched
+              "
+              class="text-danger"
+            >
               Date of birth required
             </small>
           </div>
         </div>
-  
+
         <div class="m-6">
           <label for="address" class="form-label">Address</label>
-          <textarea class="form-control" id="address" rows="3" formControlName="address"></textarea>
+          <textarea
+            class="form-control"
+            id="address"
+            rows="3"
+            formControlName="address"
+          ></textarea>
 
           <small
-          [hidden]="userCreateForm.controls['address'].valid || userCreateForm.controls['address'].untouched"
-            class="text-danger">
+            [hidden]="
+              userCreateForm.controls['address'].valid ||
+              userCreateForm.controls['address'].untouched
+            "
+            class="text-danger"
+          >
             Address required
-        </small>
+          </small>
         </div>
-  
+
         <div class="input-group">
           <div class="m-3">
             <label for="state" class="form-label">State</label>
-            <input type="text" class="form-control" id="state" formControlName="state">
+            <input
+              type="text"
+              class="form-control"
+              id="state"
+              formControlName="state"
+            />
 
             <small
-            [hidden]="userCreateForm.controls['state'].valid || userCreateForm.controls['state'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['state'].valid ||
+                userCreateForm.controls['state'].untouched
+              "
+              class="text-danger"
+            >
               State required
-          </small>
+            </small>
           </div>
           <div class="m-3">
             <label for="country" class="form-label">Country</label>
-            <input type="text" id="country" class="form-control" formControlName="country">
+            <input
+              type="text"
+              id="country"
+              class="form-control"
+              formControlName="country"
+            />
 
             <small
-            [hidden]="userCreateForm.controls['country'].valid || userCreateForm.controls['country'].untouched"
-              class="text-danger">
+              [hidden]="
+                userCreateForm.controls['country'].valid ||
+                userCreateForm.controls['country'].untouched
+              "
+              class="text-danger"
+            >
               Country required
-          </small>
+            </small>
           </div>
           <div class="m-3">
             <label for="pincode" class="form-label">Pin Code</label>
-            <input type="text" id="pincode" class="form-control" formControlName="pincode">
+            <input
+              type="text"
+              id="pincode"
+              class="form-control"
+              formControlName="pincode"
+            />
 
             <small
-            [hidden]="userCreateForm.controls['pincode'].valid || userCreateForm.controls['pincode'].untouched"
-              class="text-danger"> Pincode required </small>
+              [hidden]="
+                userCreateForm.controls['pincode'].valid ||
+                userCreateForm.controls['pincode'].untouched
+              "
+              class="text-danger"
+            >
+              Pincode required
+            </small>
           </div>
         </div>
-  
+
         <div class="input-group d-flex justify-content-around">
-          <button type="button" class="col-4 btn btn-danger" (click)="resetUserObj()">Reset</button>
-          <button type="button" class="col-4 btn btn-primary" (click)="createUser()">
+          <button
+            type="button"
+            class="col-4 btn btn-danger"
+            (click)="resetUserObj()"
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            class="col-4 btn btn-primary"
+            (click)="createUser()"
+          >
             <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
             <span>Create</span>
           </button>
         </div>
       </form>
-
     </div>
   </div>
 </div>
