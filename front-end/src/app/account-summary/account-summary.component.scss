@@ -1,7 +1,7 @@
 @import "src/assets/scss/theme/theme-variables";
 
 .action-header {
-  color: $magenta;
+  color: map-get($theme-colors, "primary-text");
 }
 
 table th {
