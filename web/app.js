@@ -16,7 +16,7 @@ console.log('--------------------- Run on port '+ port);
 router.get('*', function(req, res){
     console.log('------------------ Index---------- ');
     res.setHeader('Cache-Control', 'public, max-age=7776000000');
-    res.sendFile('index-220928001.html', { root: __dirname + '/dist' });
+    res.sendFile('index.html', { root: __dirname + '/dist' });
 });
 
 
