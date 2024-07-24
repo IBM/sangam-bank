@@ -10,7 +10,7 @@ export const environment = {
   production: true,
   version: env['npm_package_version'],
   // serverUrl: 'https://api.chucknorris.io',
-  serverUrl: 'https://apis-bankingref.apps.itzpvs-208971.cecc.ihost.com/',
+  serverUrl: 'https://apis-sangambank.apps.vp24-005.pic2.isv.ihost.com/',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],
 };
