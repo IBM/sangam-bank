@@ -8,7 +8,7 @@ describe('AccountSummaryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AccountSummaryComponent]
+      declarations: [AccountSummaryComponent],
     });
     fixture = TestBed.createComponent(AccountSummaryComponent);
     component = fixture.componentInstance;

@@ -1,67 +1,120 @@
 <div class="container">
-    <div class="card col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
-      <div class="card-body">
-        <h3 class="card-title text-center action-header">
-          Amount Transfer
-        </h3>
-        <hr class="hr">
-  
-        <form (ngSubmit)="transferAmount()" [formGroup]="amountTransferForm" novalidate>
-          <div class="input-group">
-            <div class="m-3">
-              <label for="fromAccountId" class="form-label">From Account Id</label>
+  <div class="card col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
+    <div class="card-body">
+      <h3 class="card-title text-center action-header">Amount Transfer</h3>
+      <hr class="hr" />
 
-              <select class="form-select" aria-label="From Account Id" (change)="getBalance()" formControlName="fromAccId" id="fromAccId">
-                <option *ngFor="let account of userAccounts" value="{{account.Acct_id}}">{{account.Acct_id}}</option>
-              </select>
+      <form
+        (ngSubmit)="transferAmount()"
+        [formGroup]="amountTransferForm"
+        novalidate
+      >
+        <div class="input-group">
+          <div class="m-3">
+            <label for="fromAccountId" class="form-label"
+              >From Account Id</label
+            >
 
-              <small [hidden]="amountTransferForm.controls['fromAccId'].valid || amountTransferForm.controls['fromAccId'].untouched"
-                class="text-danger">
-                From account Id required
-              </small>
+            <select
+              class="form-select"
+              aria-label="From Account Id"
+              (change)="getBalance()"
+              formControlName="fromAccId"
+              id="fromAccId"
+            >
+              <option
+                *ngFor="let account of userAccounts"
+                value="{{ account.Acct_id }}"
+              >
+                {{ account.Acct_id }}
+              </option>
+            </select>
 
-              <p class="mt-1 mb-0">
-                  Current Balance: Rs.
-              </p>
-              <p class="text-secondary d-inline">{{currentBalance}}</p>
-            </div>
+            <small
+              [hidden]="
+                amountTransferForm.controls['fromAccId'].valid ||
+                amountTransferForm.controls['fromAccId'].untouched
+              "
+              class="text-danger"
+            >
+              From account Id required
+            </small>
+
+            <p class="mt-1 mb-0">Current Balance: Rs.</p>
+            <p class="text-secondary d-inline">{{ currentBalance }}</p>
           </div>
+        </div>
 
-          <div class="input-group">
-              <div class="m-3">
-                <label for="toAccountId" class="form-label">Beneficiary Account Id</label>
-                <input type="text" class="form-control" id="toAccountId" formControlName="toAccId" required>
+        <div class="input-group">
+          <div class="m-3">
+            <label for="toAccountId" class="form-label"
+              >Beneficiary Account Id</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="toAccountId"
+              formControlName="toAccId"
+              required
+            />
 
-
-                <small [hidden]="amountTransferForm.controls['toAccId'].valid || amountTransferForm.controls['toAccId'].untouched"
-                    class="text-danger">
-                      To account Id required
-                </small>
-              </div>
+            <small
+              [hidden]="
+                amountTransferForm.controls['toAccId'].valid ||
+                amountTransferForm.controls['toAccId'].untouched
+              "
+              class="text-danger"
+            >
+              To account Id required
+            </small>
           </div>
+        </div>
 
-          <div class="input-group">
-              <div class="m-3">
-                  <label for="transactionAmount" class="form-label">Transaction Amount</label>
-                  <input type="number" class="form-control" id="transactionAmount" (change)="validateAmount()" formControlName="transactionAmount" required>
+        <div class="input-group">
+          <div class="m-3">
+            <label for="transactionAmount" class="form-label"
+              >Transaction Amount</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="transactionAmount"
+              (change)="validateAmount()"
+              formControlName="transactionAmount"
+              required
+            />
 
-                  <small [hidden]="amountTransferForm.controls['transactionAmount'].valid || amountTransferForm.controls['transactionAmount'].untouched"
-                  class="text-danger">
-                  {{transactionAmountError}}
-                  </small>
-              </div>
+            <small
+              [hidden]="
+                amountTransferForm.controls['transactionAmount'].valid ||
+                amountTransferForm.controls['transactionAmount'].untouched
+              "
+              class="text-danger"
+            >
+              {{ transactionAmountError }}
+            </small>
           </div>
-    
-          <div class="input-group d-flex justify-content-around">
-            <button type="button" class="col-4 btn btn-danger" (click)="resetDetails()">Reset</button>
-            <button type="button" class="col-4 btn btn-primary" [disabled]="amountTransferForm.invalid || isLoading" type="submit">
-              <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
-              <span>Transfer</span>
-            </button>
-          </div>
-        </form>
-  
-      </div>
+        </div>
+
+        <div class="input-group d-flex justify-content-around">
+          <button
+            type="button"
+            class="col-4 btn btn-danger"
+            (click)="resetDetails()"
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            class="col-4 btn btn-primary"
+            [disabled]="amountTransferForm.invalid || isLoading"
+            type="submit"
+          >
+            <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
+            <span>Transfer</span>
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 </div>
-

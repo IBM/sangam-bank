@@ -14,7 +14,7 @@ export const environment = {
   production: false,
   version: env['npm_package_version'] + '-dev',
   // serverUrl: 'http://localhost:9080/',
-  serverUrl: 'https://apis-bankingref.apps.itzpvs-208971.cecc.ihost.com/',
+  serverUrl: 'https://apis-sangambank.apps.vp24-005.pic2.isv.ihost.com/',
   // serverUrl: 'http://api-newroute-thefuture.apps.p1362.cecc.ihost.com/',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'fr-FR'],

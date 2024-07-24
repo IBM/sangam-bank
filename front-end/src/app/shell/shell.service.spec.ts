@@ -9,7 +9,10 @@ describe('Shell', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ShellComponent],
-      providers: [AuthenticationGuard, { provide: AuthenticationService, useClass: MockAuthenticationService }],
+      providers: [
+        AuthenticationGuard,
+        { provide: AuthenticationService, useClass: MockAuthenticationService },
+      ],
     });
   });
 

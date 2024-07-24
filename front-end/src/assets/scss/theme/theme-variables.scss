@@ -16,20 +16,25 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 //
 
 $white: #fff;
-$gray-100: #f8f9fa;
-$gray-200: #e9ecef;
-$gray-300: #dee2e6;
-$gray-400: #ced4da;
-$gray-500: #adb5bd;
-$gray-600: #868e96;
-$gray-700: #495057;
-$gray-800: #343a40;
-$gray-900: #212529;
+// $gray-100: #f8f9fa;
+// $gray-200: #e9ecef;
+// $gray-300: #dee2e6;
+// $gray-400: #ced4da;
+// $gray-500: #adb5bd;
+// $gray-600: #868e96;
+// $gray-700: #495057;
+// $gray-800: #343a40;
+// $gray-900: #212529;
+
+$gray-100: #161616;
+$gray-90: #262626;
+$gray-10: #f4f4f4;
 $black: #000;
 
 $magenta: #9e1b51;
 $magenta-light: #ebdde2;
 $indigo: #6610f2;
+$ibm-blue: #1264fe;
 $purple: #6f42c1;
 $pink: #e83e8c;
 $red: #dc3545;
@@ -40,17 +45,18 @@ $teal: #20c997;
 $cyan: #17a2b8;
 
 $theme-colors: (
-  primary: $magenta,
-  secondary: $gray-600,
+  primary: $ibm-blue,
+  primary-text: $gray-100,
+  secondary: $gray-90,
   success: $green,
   info: $cyan,
   warning: $yellow,
   danger: $red,
-  light: $gray-100,
-  dark: $gray-800,
+  light: $gray-10,
+  dark: $gray-100,
 );
 
-$form-check-input-checked-bg-color: $magenta;
+$form-check-input-checked-bg-color: $ibm-blue;
 
 // Use Bootstrap defaults for other variables, imported here so we can access all app variables in one place when used
 // in components.

@@ -2,70 +2,97 @@
   <div class="container">
     <div class="card col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
       <div class="card-body">
-        <h3 class="card-title text-center action-header">
-          Account Summary
-        </h3>
-        <hr class="hr">
-        <form (ngSubmit)="getTransactions()" [formGroup]="accountForm" novalidate>
+        <h3 class="card-title text-center action-header">Account Summary</h3>
+        <hr class="hr" />
+        <form
+          (ngSubmit)="getTransactions()"
+          [formGroup]="accountForm"
+          novalidate
+        >
           <div class="input-group">
             <div class="m-3">
               <label for="accountType" class="form-label">Account Type</label>
-              <select class="form-select" aria-label="Default account type" id="accountType">
+              <select
+                class="form-select"
+                aria-label="Default account type"
+                id="accountType"
+              >
                 <option selected value="1">Savings</option>
               </select>
             </div>
           </div>
-    
+
           <div class="input-group">
             <div class="m-3">
               <label for="accountId" class="form-label">Account Id</label>
               <!-- <input type="text" class="form-control" id="accountId" formControlName="accountId" required> -->
-              <select class="form-select" aria-label="Default account" formControlName="accountId" id="accountType">
-                <option *ngFor="let account of userAccounts" value="{{account.Acct_id}}">{{account.Acct_id}}</option>
+              <select
+                class="form-select"
+                aria-label="Default account"
+                formControlName="accountId"
+                id="accountType"
+              >
+                <option
+                  *ngFor="let account of userAccounts"
+                  value="{{ account.Acct_id }}"
+                >
+                  {{ account.Acct_id }}
+                </option>
               </select>
               <small
-              [hidden]="accountForm.controls['accountId'].valid || accountForm.controls['accountId'].untouched"
-                class="text-danger">
+                [hidden]="
+                  accountForm.controls['accountId'].valid ||
+                  accountForm.controls['accountId'].untouched
+                "
+                class="text-danger"
+              >
                 Account Id required
-            </small>
+              </small>
             </div>
           </div>
 
           <label *ngIf="currentBalance >= 0" class="d-block mb-3">
             Current Balance:
-            <small> {{currentBalance}} </small>
+            <small> {{ currentBalance }} </small>
           </label>
-    
+
           <div class="input-group d-flex justify-content-around">
-            <button type="button" class="col-4 btn btn-danger" (click)="resetDetails()">Reset</button>
-            <button type="button" type="submiw"  class="col-4 btn btn-primary">
+            <button
+              type="button"
+              class="col-4 btn btn-danger"
+              (click)="resetDetails()"
+            >
+              Reset
+            </button>
+            <button type="button" type="submiw" class="col-4 btn btn-primary">
               <i class="fas fa-cog fa-spin" [hidden]="!isLoading"></i>
               <span>Display</span>
             </button>
           </div>
         </form>
-  
       </div>
     </div>
-  
-    <div class="card col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded" *ngIf="transactions.length > 0">
+
+    <div
+      class="card col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded"
+      *ngIf="transactions.length > 0"
+    >
       <div class="table-responsive">
         <table class="table">
           <thead>
-            <th *ngFor="let header of transactionTableHeaders"> {{header}} </th>
+            <th *ngFor="let header of transactionTableHeaders">{{ header }}</th>
           </thead>
-    
+
           <tbody>
             <tr *ngFor="let transaction of transactions; let i = index">
-              <td>{{i}}</td>
-              <td>{{transaction.From_acc_id}}</td>
-              <td>{{transaction.To_acc_id || ''}}</td>
-              <td>{{transaction.Tran_date | date: 'dd/MM/yyyy' || ''}}</td>
-              <td>{{transaction.Transaction_amount || ''}}</td>
-              <td>{{transaction.Transaction_type || ''}}</td>
+              <td>{{ i }}</td>
+              <td>{{ transaction.From_acc_id }}</td>
+              <td>{{ transaction.To_acc_id || '' }}</td>
+              <td>{{ transaction.Tran_date | date : 'dd/MM/yyyy' || '' }}</td>
+              <td>{{ transaction.Transaction_amount || '' }}</td>
+              <td>{{ transaction.Transaction_type || '' }}</td>
             </tr>
           </tbody>
-    
         </table>
       </div>
     </div>

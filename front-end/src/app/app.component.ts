@@ -35,9 +35,14 @@ export class AppComponent implements OnInit, OnDestroy {
     log.debug('init');
 
     // Setup translations
-    this.i18nService.init(environment.defaultLanguage, environment.supportedLanguages);
+    this.i18nService.init(
+      environment.defaultLanguage,
+      environment.supportedLanguages
+    );
 
-    const onNavigationEnd = this.router.events.pipe(filter((event) => event instanceof NavigationEnd));
+    const onNavigationEnd = this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd)
+    );
 
     // Change page title on navigation or language change, based on route data
     merge(this.translateService.onLangChange, onNavigationEnd)

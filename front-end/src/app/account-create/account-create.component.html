@@ -1,15 +1,18 @@
 <div class="container">
   <div class="card col-md-6 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
     <div class="card-body">
-      <h3 class="card-title text-center action-header">
-        Account Create
-      </h3>
-      <hr class="hr">
+      <h3 class="card-title text-center action-header">Account Create</h3>
+      <hr class="hr" />
 
       <div class="input-group">
         <div class="m-3">
           <label for="beneficiary" class="form-label">Beneficiary Id</label>
-          <input type="number" class="form-control" id="beneficiary" [(ngModel)]="accountObj.userid">
+          <input
+            type="number"
+            class="form-control"
+            id="beneficiary"
+            [(ngModel)]="accountObj.userid"
+          />
 
           <small [hidden]="!isBeneficiaryError" class="text-danger">
             Enter beneficiary Id
@@ -20,29 +23,57 @@
       <div class="input-group">
         <div class="m-3">
           <label for="bankid" class="form-label">Bank Id</label>
-          <input type="text" class="form-control" id="bankid" readonly [ngModel]="accountObj.bankid">
+          <input
+            type="text"
+            class="form-control"
+            id="bankid"
+            readonly
+            [ngModel]="accountObj.bankid"
+          />
         </div>
 
         <div class="m-3">
           <label for="cif" class="form-label">CIF</label>
-          <input type="text" class="form-control" id="cif" readonly [ngModel]="accountObj.cif">
+          <input
+            type="text"
+            class="form-control"
+            id="cif"
+            readonly
+            [ngModel]="accountObj.cif"
+          />
         </div>
       </div>
 
       <div class="input-group">
         <div class="m-3">
           <label for="accountType" class="form-label">Account Type</label>
-          <select class="form-select" aria-label="Default account" id="accountType" [(ngModel)]="accountObj.acc_type">
+          <select
+            class="form-select"
+            aria-label="Default account"
+            id="accountType"
+            [(ngModel)]="accountObj.acc_type"
+          >
             <option selected value="1">Savings</option>
           </select>
         </div>
       </div>
 
       <div class="input-group d-flex justify-content-around">
-        <button type="button" class="col-4 btn btn-danger" (click)="resetAccountObj()">Reset</button>
-        <button type="button" class="col-4 btn btn-primary" (click)="createAccount()">Create</button>
+        <button
+          type="button"
+          class="col-4 btn btn-danger"
+          (click)="resetAccountObj()"
+        >
+          Reset
+        </button>
+        <button
+          type="button"
+          class="col-4 btn btn-primary"
+          (click)="createAccount()"
+        >
+          Create
+        </button>
       </div>
-
     </div>
   </div>
 </div>

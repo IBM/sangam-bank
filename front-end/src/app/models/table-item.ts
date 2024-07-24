@@ -30,14 +30,13 @@ export interface TableItem {
   transaction_id?: number;
 }
 
-  // Interface for the content section within a response item
-  export interface ContentSection {
-    data: string | TableItem[] | { [key: string]: string };
-    type: string;
-  }
-  
-  
-  export interface ResponseItem {
-    sections: ContentSection[];
-    type: string;
-  }
+// Interface for the content section within a response item
+export interface ContentSection {
+  data: string | TableItem[] | { [key: string]: string };
+  type: string;
+}
+
+export interface ResponseItem {
+  sections: ContentSection[];
+  type: string;
+}

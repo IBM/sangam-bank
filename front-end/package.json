@@ -1,5 +1,5 @@
 {
-  "name": "the-future",
+  "name": "sangam-bank",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "write:env": "ngx-scripts env npm_package_version",
     "prettier": "prettier --write \"./src/**/*.{ts,js,html,scss}\"",
     "prettier:check": "prettier --list-different \"./src/**/*.{ts,js,html,scss}\"",
-    "postinstall": "npm run prettier -s && husky install",
+    "postinstall": "npm run prettier -s && cd .. &&  husky install",
     "generate": "ng generate"
   },
   "dependencies": {
