@@ -1,4 +1,4 @@
-[![Page_Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fmithunhr87%2Fmetrics_first&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FIBM%2Fsangam-bank&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 Sangam Bank imitates core and digital banking elements. This kind of application is necessary since it would be time and resource intensive to demonstrate the capabilities of the platform by utilising a real core banking/digital banking application. The suggested architecture contains the components that are most frequently utilised in current core and online banking apps.
 
